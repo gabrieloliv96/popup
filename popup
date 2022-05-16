@@ -1,0 +1,55 @@
+_popup() {
+    showDialog<String>(
+      context: context,
+      builder: (_) => AlertDialog(
+        backgroundColor: Colors.blue.shade900,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        content: Builder(
+          builder: (context) {
+            // Get available height and width of the build area of this widget. Make a choice depending on the size.
+            var height = MediaQuery.of(context).size.height;
+            var width = MediaQuery.of(context).size.width;
+            return SizedBox(
+              height: height - 550,
+              width: width,
+              child: const SingleChildScrollView(
+                child: Text(
+                  'Para ter acesso a todos os serviços, como:\n\n- Emissão de Boletos\n- Atualização Cadastral\n\n Precisamos validar seus dados através dos seus documentos listados a seguir.',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            );
+          },
+        ),
+        title: Center(
+          child: Card(
+            borderOnForeground: true,
+            color: Colors.red.shade900,
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'ATENÇÃO',
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+        actions: <Widget>[
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+                onPrimary: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                _cadastrar();
+              },
+              child: const Text('Entendi!'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
